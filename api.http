@@ -1,0 +1,30 @@
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+    "title": "Take Shower"
+}
+
+###
+
+GET http://localhost:3000/todos
+
+###
+
+GET http://localhost:3000/todos/1
+
+###
+
+PATCH http://localhost:3000/todos/1
+Content-Type: application/json
+
+{
+    "status": true
+}
+
+###
+
+DELETE http://localhost:3000/todos/1
+
+###
+

@@ -19,18 +19,18 @@ export class TodosController {
 
   @Post()
   create(@Body() createTodoDto: CreateTodoDto, @Req() req: Payload) {
-    createTodoDto.user_id = req.user.id;
+    createTodoDto.user_id = req.payload.id;
     return this.todosService.create(createTodoDto);
   }
 
   @Get()
   findAll(@Req() req: Payload) {
-    return this.todosService.findAll(req.user.id);
+    return this.todosService.findAll(req.payload.id);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string, @Req() req: Payload) {
-    return this.todosService.findOne(+id, req.user.id);
+    return this.todosService.findOne(+id, req.payload.id);
   }
 
   @Patch(':id')
@@ -39,12 +39,12 @@ export class TodosController {
     @Body() updateTodoDto: UpdateTodoDto,
     @Req() req: Payload,
   ) {
-    updateTodoDto.user_id = req.user.id;
+    updateTodoDto.user_id = req.payload.id;
     return this.todosService.update(+id, updateTodoDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string, @Req() req: Payload) {
-    return this.todosService.remove(+id, req.user.id);
+    return this.todosService.remove(+id, req.payload.id);
   }
 }
